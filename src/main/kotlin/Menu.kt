@@ -1,14 +1,13 @@
 import java.util.Scanner
 
-abstract class Menu<T>(val items: MutableList<T>) {
+abstract class Menu {
     protected val scanner = Scanner(System.`in`)
 
     open fun show() {
         while (true) {
             menuDisplay()
-            print("Выберите опцию: ")
             val pick = getUserPick()
-            if (pick == "выход") break
+            if (pick == "0") break
             handlePick(pick)
         }
     }
@@ -16,12 +15,8 @@ abstract class Menu<T>(val items: MutableList<T>) {
     protected abstract fun menuDisplay()
     protected abstract fun handlePick(pick: String)
 
-    private fun getUserPick(): String {
-        return scanner.nextLine().trim()
-    }
-
-    protected fun readLine(prompt: String): String {
-        print(prompt)
+    open fun getUserPick(): String {
+        print("Выберите опцию: ")
         return scanner.nextLine().trim()
     }
 }

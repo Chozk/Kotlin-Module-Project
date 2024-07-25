@@ -1,17 +1,18 @@
 import data.Note
 
-class MenuNoteView(private val note: Note) : Menu<Note>(mutableListOf(note)) {
+class MenuNoteView(private val note: Note) : Menu() {
+
     override fun menuDisplay() {
         println("\nПросмотр заметки")
         println("Название: ${note.title}")
         println("Содержание: ${note.content}")
-        println("выход. Назад")
+        println("0. Назад")
     }
 
     override fun handlePick(pick: String) {
         when (pick) {
-            "выход" -> return
-            else -> println("Некорректный выбор.")
+            "0" -> return
+            else -> println("Некорректный выбор. Введите цифру меню.")
         }
     }
 }
