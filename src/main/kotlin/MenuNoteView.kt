@@ -6,13 +6,12 @@ class MenuNoteView(private val note: Note) : Menu() {
         println("\nПросмотр заметки")
         println("Название: ${note.title}")
         println("Содержание: ${note.content}")
-        println("0. Назад")
+        println("0. Выход")
     }
 
-    override fun handlePick(pick: String) {
-        when (pick) {
-            "0" -> return
-            else -> println("Некорректный выбор. Введите цифру меню.")
-        }
+    override fun handlePick(pick: String): Boolean {
+        if (pick == "0") return false
+        println("Некорректный ввод. Введите '0' для выхода.")
+        return true
     }
 }
